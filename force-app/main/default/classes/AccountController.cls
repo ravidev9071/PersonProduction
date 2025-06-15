@@ -9,11 +9,11 @@ public with sharing class AccountController {
     }
     @AuraEnabled(cacheable=true)
     public static List<Account> getContactsByAccountId(String searchkey) {
-    //this is used for th
+
          string searchKeyword = '%' + searchkey + '%';
 
       list<Account> accList = new list<Account>();
-     
+     //this is used thitas
 	  
         for(Account conObj : [SELECT Name ,Phone,AccountNumber,Description,AnnualRevenue,AccountSource,CreatedDate 
                        FROM Account  
