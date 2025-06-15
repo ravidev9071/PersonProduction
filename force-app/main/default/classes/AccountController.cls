@@ -9,7 +9,7 @@ public with sharing class AccountController {
     }
     @AuraEnabled(cacheable=true)
     public static List<Account> getContactsByAccountId(String searchkey) {
-    //this is used for the
+    //this is used for th
          string searchKeyword = '%' + searchkey + '%';
 
       list<Account> accList = new list<Account>();
