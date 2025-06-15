@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>61.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <assignments>
+        <name>calculate_formula</name>
+        <label>calculate formula</label>
+        <locationX>517</locationX>
+        <locationY>347</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.Sum_Of_Amount__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>calculatesalary</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>$Record.Description</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>type</elementReference>
+            </value>
+        </assignmentItems>
+    </assignments>
+    <environments>Default</environments>
+    <formulas>
+        <name>calculatesalary</name>
+        <dataType>Number</dataType>
+        <expression>IF(AND({!$Record.NumberOfEmployees}&gt;0,{!$Record.NumberOfEmployees&lt;11}), {!$Record.NumberOfEmployees*10000}, IF(AND({!$Record.NumberOfEmployees}&gt;11,{!$Record.NumberOfEmployees&lt;21}), {!$Record.NumberOfEmployees*20000}, {!$Record.NumberOfEmployees*30000))
+}</expression>
+        <scale>0</scale>
+    </formulas>
+    <formulas>
+        <name>type</name>
+        <dataType>String</dataType>
+        <expression>IF(ISPICKVAL({!$Record.Rating}, &apos;Hot&apos;),&apos;Hot&apos;, IF(ISPICKVAL({!$Record.Rating}, &apos;Cold&apos;), &apos;Cold&apos;, &apos;Warm&apos;))</expression>
+    </formulas>
+    <interviewLabel>formula testing {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>formula testing</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>FREE_FORM_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <start>
+        <locationX>249</locationX>
+        <locationY>39</locationY>
+        <connector>
+            <targetReference>calculate_formula</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>NumberOfEmployees</field>
+            <operator>IsNull</operator>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </filters>
+        <object>Account</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordBeforeSave</triggerType>
+    </start>
+    <status>Obsolete</status>
+</Flow>
