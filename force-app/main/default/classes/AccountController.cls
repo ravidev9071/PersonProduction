@@ -7,7 +7,7 @@ public with sharing class AccountController {
         List<Account> accounts = Database.query(query);
         return accounts;
     }
-
+// this is used for testing
     @AuraEnabled(cacheable=true)
     public static List<Account> getContactsByAccountId(String searchkey) {
     
@@ -33,7 +33,7 @@ public with sharing class AccountController {
    }
    @AuraEnabled
    public static List<Contact> updateRecord(String accId){
-       System.debug('@@@@AccountId@@@'+accId);
+       
        Contact acc=[select Id,LastName,Department,IsRecall__c from Contact where Id=:accId];
        acc.Department='Approved';
        acc.LastName=acc.LastName+' updated';
