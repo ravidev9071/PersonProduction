@@ -7,11 +7,9 @@ public with sharing class AccountController {
         List<Account> accounts = Database.query(query);
         return accounts;
     }
-// this is used for testing
-
     @AuraEnabled(cacheable=true)
     public static List<Account> getContactsByAccountId(String searchkey) {
-    
+    //this is used for the
          string searchKeyword = '%' + searchkey + '%';
 
       list<Account> accList = new list<Account>();
