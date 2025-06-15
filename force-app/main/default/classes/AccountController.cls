@@ -20,7 +20,6 @@ public with sharing class AccountController {
      */
     @AuraEnabled(cacheable=true)
     public static List<Account> getAccounts(String direction) {
-        String query = 'SELECT Name ,Phone,AccountNumber,Description,AnnualRevenue,AccountSource,CreatedDate ' +
         String query = 'SELECT Name, Phone, AccountNumber, Description, AnnualRevenue, AccountSource, CreatedDate ' +
                        'FROM Account ' +
                        'ORDER BY Name ' + direction;
@@ -49,7 +48,6 @@ public with sharing class AccountController {
         ]) {
             accList.add(acc);
         }
-      return accList;      
         return accList;      
     }
 
