@@ -9,24 +9,16 @@ public with sharing class AccountController {
     }
     @AuraEnabled(cacheable=true)
     public static List<Account> getContactsByAccountId(String searchkey) {
-
-         string searchKeyword = '%' + searchkey + '%';
-
-      list<Account> accList = new list<Account>();
-     //this is used thitas
-     
-	  
+        string searchKeyword = '%' + searchkey + '%';
+        list<Account> accList = new list<Account>();
+       
         for(Account conObj : [SELECT Name ,Phone,AccountNumber,Description,AnnualRevenue,AccountSource,CreatedDate 
                        FROM Account  
                        Where Name LIKE : searchKeyword])
                        {
            accList.add(conObj);
         }
-        
-        //test
-      return accList;  
-         
-        
+      return accList;      
     }
       @AuraEnabled(cacheable=true)
    public static List<Contact> displayAccounts(){
@@ -34,7 +26,6 @@ public with sharing class AccountController {
    }
    @AuraEnabled
    public static List<Contact> updateRecord(String accId){
-       
        Contact acc=[select Id,LastName,Department,IsRecall__c from Contact where Id=:accId];
        acc.Department='Approved';
        acc.LastName=acc.LastName+' updated';
