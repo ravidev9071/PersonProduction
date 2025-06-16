@@ -81,7 +81,7 @@ public with sharing class AccountController {
         ];
 //changed
         acc.Department = 'Approved';
-        acc.LastName = acc.LastName + ' updated';
+        acc.LastName = acc.LastName + ' updated1';
         acc.IsRecall__c = false;
 
         try {
