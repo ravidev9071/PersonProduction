@@ -79,7 +79,7 @@ public with sharing class AccountController {
             FROM Contact 
             WHERE Id = :accId
         ];
-
+//changed
         acc.Department = 'Approved';
         acc.LastName = acc.LastName + ' updated';
         acc.IsRecall__c = false;
