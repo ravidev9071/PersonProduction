@@ -80,6 +80,8 @@ public with sharing class AccountController {
             WHERE Id = :accId
         ];
 //changed
+
+//added
         acc.Department = 'Approved';
         acc.LastName = acc.LastName + ' updated1';
         acc.IsRecall__c = false;
