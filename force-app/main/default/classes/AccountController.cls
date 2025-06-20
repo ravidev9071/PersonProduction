@@ -1,12 +1,4 @@
-/**
- * @name AccountController
- * @description 
- *  This Apex controller is used to retrieve and update Account and Contact records.
- *  It supports Lightning components via @AuraEnabled methods.
- * 
- * @author Ravi kumar
- * @date 2025-06-15
- */
+
 public with sharing class AccountController {
 
     /**
