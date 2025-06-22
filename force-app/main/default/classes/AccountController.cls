@@ -1,4 +1,4 @@
-
+//SELECT Id, Parent.Label, Parent.Name FROM SetupEntityAccess WHERE SetupEntityType = 'CustomPermission' AND SetupEntityId IN ( SELECT Id FROM CustomPermission WHERE DeveloperName = 'CanViewLoanDocGenButtons')
 public with sharing class AccountController {
 
     /**
